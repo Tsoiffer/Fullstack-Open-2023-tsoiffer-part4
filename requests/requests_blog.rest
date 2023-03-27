@@ -1,4 +1,4 @@
-DELETE http://localhost:3003/api/persons/641b9ba7b652e90fdb0a5f97
+DELETE http://localhost:3003/api/blogs/641b9ba7b652e90fdb0a5f97
 
 ###
 POST http://localhost:3003/api/blogs/
@@ -8,7 +8,7 @@ content-type: application/json
   "title": "MiduDev",
   "author": "Miguel Angel Duran",
   "url": "https://midu.dev/",
-  "likes": 1
+  "likes": 5
 }
 
 ###
