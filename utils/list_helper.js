@@ -40,9 +40,28 @@ const favoriteBlog = (blogs) => {
   return max;
 };
 
+const mostLikes = (blogs) => {
+  if (blogs.length === 0) {
+    return 0;
+  }
+  const blogsForAthor = blogs.map((blog) => {
+    const totalLikes = blogs
+      .filter((otherBlog) => otherBlog.author === blog.author)
+      .map((blog) => blog.likes)
+      .reduce((partialSum, a) => partialSum + a, 0);
+    console.log("total likes", totalLikes);
+    return { author: blog.author, likes: totalLikes };
+  });
+  const max = blogsForAthor.reduce(function (prev, current) {
+    return prev.likes > current.likes ? prev : current;
+  });
+  return max;
+};
+
 module.exports = {
   dummy,
   totalLikes,
   mostBlogs,
   favoriteBlog,
+  mostLikes,
 };
