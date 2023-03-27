@@ -12,6 +12,9 @@ const totalLikes = (blogs) => {
 };
 
 const mostBlogs = (blogs) => {
+  if (blogs.length === 0) {
+    return 0;
+  }
   const blogsForAthor = blogs.map((blog) => {
     const totalBlogs = blogs.filter(
       (otherBlog) => otherBlog.author === blog.author
@@ -24,8 +27,22 @@ const mostBlogs = (blogs) => {
   return max;
 };
 
+const favoriteBlog = (blogs) => {
+  if (blogs.length === 0) {
+    return 0;
+  }
+  const blogsForAthor = blogs.map((blog) => {
+    return { author: blog.author, title: blog.title, likes: blog.likes };
+  });
+  const max = blogsForAthor.reduce(function (prev, current) {
+    return prev.likes > current.likes ? prev : current;
+  });
+  return max;
+};
+
 module.exports = {
   dummy,
   totalLikes,
   mostBlogs,
+  favoriteBlog,
 };
